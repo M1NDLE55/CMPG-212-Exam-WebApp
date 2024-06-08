@@ -34,7 +34,7 @@
                     <asp:TextBox ID="txtPassword" runat="server" placeholder="Enter your password here" type="password"></asp:TextBox>
                 </div>  
                 <asp:Button ID="btnLogin" CssClass="button" runat="server" Text="Login" OnClick="btnLogin_Click" />
-                <a class="link" href="/register">New Patient? Finish your account setup here</a>
+                <a class="link" href="/register">New Patient? Finish your account setup here</a>            
             </div>            
         </div>      
     </form>

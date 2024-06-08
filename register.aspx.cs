@@ -22,7 +22,7 @@ namespace WebApp_44905165
             string email = txtEmail.Text;
             string password = txtPassword.Text;
 
-            SqlCommand getIdCmd = new SqlCommand(@"select id, case when password is null then 'empty' else 'filled' end as status from patient where email = @email", handler.conn);
+            SqlCommand getIdCmd = new SqlCommand(@"select id, name, case when password is null then 'empty' else 'filled' end as status from patient where email = @email", handler.conn);
             getIdCmd.Parameters.AddWithValue("@email", email);
 
             string[] patient = handler.GetRowValues(getIdCmd, 2);
@@ -36,7 +36,7 @@ namespace WebApp_44905165
             }
 
             // check if password is empty
-            if (patient[1] != "empty")
+            if (patient[2] != "empty")
             {
                 lblRegisterError.Text = "This account is already registered*";
                 lblRegisterError.Visible = true;
@@ -60,9 +60,10 @@ namespace WebApp_44905165
 
             // create session
             Session["UserID"] = patientID;
+            Session["UserName"] = patient[1];
 
             // redirect to dashboard
-            //Response.Redirect("/dashboard");
+            Response.Redirect("/appointments");
         }
     }
 }

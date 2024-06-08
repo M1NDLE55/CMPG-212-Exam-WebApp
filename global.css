@@ -1,4 +1,10 @@
-﻿* {
+﻿:root {
+    --primary: #00A5CF;
+    --secondary: #004E64;
+    --accent: #7AE582;
+}
+
+* {
     box-sizing: border-box;
     font-family: Roboto;
 }
@@ -21,12 +27,11 @@ body {
 }
 
 .login-card {
-    /*border: 1px solid #004E64;*/
     background: white;
 }
 
 .link {
-    color: #004E64;
+    color: var(--secondary);
     text-align: center;
     font-size: 14px;
     margin-top: 8px;
@@ -79,14 +84,86 @@ body {
     font-size: 18px;
     padding: 8px;
     margin-top: 8px;
-    border: 1px solid #004E64;
-    background-color: #00A5CF;
+    border: 1px solid var(--secondary);
+    background-color: var(--primary);
     border-radius: 6px;
     color: white;
     width: 100%;
     cursor: pointer;
+    transition: background-color linear 0.15s;
 }
 
     .button:hover {
         background-color: #0095ba;
     }
+
+/*#region Dashboard layout*/
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    background-color: white;
+    border-bottom: 1px solid var(--accent);
+}
+
+    .header > img {
+        height: 50px;        
+    }
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    min-height: calc(100vh - 67px);
+    height: 100%;
+}
+
+.sidenav {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    border-right: 1px solid var(--accent);
+    width: 180px;
+    padding: 8px;
+    background-color: white;
+}
+
+    .sidenav > a {
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 10px;
+        border: 1px solid white;
+        color: var(--secondary);
+        transition: border-color linear 0.15s;
+    }
+
+        .sidenav > a:hover {
+            border-color: var(--accent);        
+        }
+
+.content {
+    position: relative;
+    flex: auto;
+    padding: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.account-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+    .account-link > span {
+        color: var(--secondary);
+    }
+
+    .account-link > img {
+        height: 30px;
+    }
+/*#endregion */

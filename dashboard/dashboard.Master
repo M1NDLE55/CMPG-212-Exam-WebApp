@@ -1,0 +1,33 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="dashboard.master.cs" Inherits="WebApp_44905165.dashboard.dashboard" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    <link href="~/global.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />  
+</head>
+<body>
+    <form id="frmDashboard" runat="server">
+        <div class="header">
+            <asp:Image ID="imgLogo" runat="server" ImageUrl="~/assets/logo.svg" />
+            <asp:HyperLink ID="linkAccount" runat="server" NavigateUrl="/account" CssClass="account-link">
+                <span id="username" runat="server"></span>
+                <asp:Image ID="imgUser" runat="server" ImageUrl="~/assets/user.svg"/>
+            </asp:HyperLink>
+        </div>
+        <div class="content-container">
+            <div class="sidenav">
+                <asp:HyperLink ID="linkAppointments" runat="server" NavigateUrl="/appointments">My Appointments</asp:HyperLink>
+                <asp:HyperLink ID="linkBooking" runat="server" NavigateUrl="/booking">Book Appointment</asp:HyperLink>
+            </div>
+            <div class="content">
+                <asp:ContentPlaceHolder ID="masterContent" runat="server"></asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

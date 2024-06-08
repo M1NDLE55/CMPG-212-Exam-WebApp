@@ -13,17 +13,35 @@ namespace WebApp_44905165
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            //login
+            // login
             RouteTable.Routes.MapPageRoute(
                 "Login",
                 "",
                 "~/default.aspx");
 
-            //register
+            // register
             RouteTable.Routes.MapPageRoute(
                 "Register",
                 "register",
                 "~/register.aspx");
+            
+            // appointments
+            RouteTable.Routes.MapPageRoute(
+                "Appointments",
+                "appointments",
+                "~/dashboard/appointments.aspx");
+            
+            // booking
+            RouteTable.Routes.MapPageRoute(
+                "Booking",
+                "booking",
+                "~/dashboard/booking.aspx");
+            
+            // account
+            RouteTable.Routes.MapPageRoute(
+                "Account",
+                "account",
+                "~/dashboard/account.aspx");
         }
 
         protected void Session_Start(object sender, EventArgs e)

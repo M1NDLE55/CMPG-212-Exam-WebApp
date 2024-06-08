@@ -19,15 +19,18 @@ namespace WebApp_44905165
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = txtEmail.Text;
-            string password = txtPassword.Text;
+            string email = "userthree@test.com";
+            string password = "okayokay";
+            
+            //string email = txtEmail.Text;
+            //string password = txtPassword.Text;
 
             // get id if user info correct
-            SqlCommand cmd = new SqlCommand(@"select id from patient where email = @email and password = @password", handler.conn);
+            SqlCommand cmd = new SqlCommand(@"select id, name from patient where email = @email and password = @password", handler.conn);
             cmd.Parameters.AddWithValue("@email", email);
             cmd.Parameters.AddWithValue("@password", password);
 
-            string[] data = handler.GetRowValues(cmd, 1);
+            string[] data = handler.GetRowValues(cmd, 2);
             if (data != null)
             {
                 // hide error message
@@ -35,9 +38,10 @@ namespace WebApp_44905165
 
                 // create session
                 Session["UserID"] = int.Parse(data[0]);
+                Session["UserName"] = data[1];
 
                 // redirect to dashboard
-                //Response.Redirect("/dashboard");
+                Response.Redirect("/appointments");
             }
             else
             {
