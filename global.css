@@ -1,0 +1,92 @@
+﻿* {
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+body {
+    margin: 0;
+    background: #F5F5F5;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    max-width: 500px;
+    width: 100%;
+}
+
+.login-card {
+    /*border: 1px solid #004E64;*/
+    background: white;
+}
+
+.link {
+    color: #004E64;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.text-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+    .text-input span {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+
+    .text-input input {
+        font-size: 16px;
+        padding: 8px;
+        border: 1px solid #DEDEDE;
+        border-radius: 6px;
+    }
+
+.input-validation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.multiple-validation {
+    position: relative;
+    flex: auto;
+}
+
+    .multiple-validation > span {
+        position: absolute;
+        right: 0;
+    }
+
+.button {
+    font-size: 18px;
+    padding: 8px;
+    margin-top: 8px;
+    border: 1px solid #004E64;
+    background-color: #00A5CF;
+    border-radius: 6px;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+}
+
+    .button:hover {
+        background-color: #0095ba;
+    }

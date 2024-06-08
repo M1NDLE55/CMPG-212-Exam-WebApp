@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -9,7 +10,9 @@ namespace WebApp_44905165
 {
     public class DataHandler
     {
-        private SqlConnection conn;
+        public SqlConnection conn { get; set; }
+        private SqlDataAdapter adapter;
+        private DataSet ds;
 
         public DataHandler()
         {
@@ -22,14 +25,115 @@ namespace WebApp_44905165
                 string databasePath = Path.GetFullPath(Path.Combine(parentFolder, relativePath));
 
                 conn = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={databasePath};Integrated Security=True");
-
-                conn.Open();
-                conn.Close();
+                adapter = new SqlDataAdapter();
+                ds = new DataSet();
             }
             catch (Exception ex)
             {
                 // error message
                 System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+
+        public string[] GetRowValues(SqlCommand cmd, int MAX_FIELDS = 50)
+        {
+            // returns array with fields of a single row
+
+            string[] data = new string[MAX_FIELDS];
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                // create array with values of row
+                if (dr.Read())
+                {
+                    // get number of fields in row
+                    int fields = dr.FieldCount;
+
+                    // populate array
+                    for (int i = 0; i < fields; i++)
+                    {
+                        data[i] = dr[i].ToString();
+                    }
+                }
+                else
+                {
+                    // return null if there are no rows
+                    data = null;
+                }
+
+                cmd.Dispose();
+                conn.Close();
+                return data;
+            }
+            catch (SqlException ex)
+            {
+                // error message
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public bool ExecuteInsert(SqlCommand cmd)
+        {
+            try
+            {
+                // uses sql insert statement to insert record into database
+                conn.Open();
+
+                adapter.InsertCommand = cmd;
+
+                bool result = false;
+                if (adapter.InsertCommand.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+
+                cmd.Dispose();
+
+                conn.Close();
+
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                // error message
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+
+                return false;
+            }
+        }
+
+        public bool ExecuteUpdate(SqlCommand cmd)
+        {
+            try
+            {
+                // uses sql update statement to update database
+                conn.Open();
+
+                adapter.UpdateCommand = cmd;
+
+                bool result = false;
+                if (adapter.UpdateCommand.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+
+                cmd.Dispose();
+
+                conn.Close();
+
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                // error message
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+
+                return false;
             }
         }
     }
