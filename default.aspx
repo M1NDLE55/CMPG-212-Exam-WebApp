@@ -14,7 +14,7 @@
     <form id="frmLogin" runat="server" class="login-page">
         <div runat="server" class="login-container">
             <h1>Login</h1>
-            <div class="card login-card">
+            <div class="card">
                 <asp:Label ID="lblLoginError" runat="server" Text="Incorrect email or password*" ForeColor="Red" Visible="false"></asp:Label>
                 <div class="text-input">
                     <div class="input-validation">

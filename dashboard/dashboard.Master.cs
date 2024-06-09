@@ -12,12 +12,6 @@ namespace WebApp_44905165.dashboard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // redirect if not logged in
-            if (Session["UserID"] == null)
-            {
-                Response.Redirect("/", true);
-            }
-
             // display user name
             username.InnerText = Session["UserName"].ToString();
 

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace WebApp_44905165
 {
@@ -32,6 +33,41 @@ namespace WebApp_44905165
             {
                 // error message
                 System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+
+        public bool FillGridView(SqlCommand cmd, ref GridView gv)
+        {
+            try
+            {
+                // uses sql select statement to fill referenced gridview
+                conn.Open();
+
+                ds.Clear();
+
+                adapter.SelectCommand = cmd;
+
+                // will return true if rows were added to gridview
+                bool result = true;
+                if (adapter.Fill(ds) < 1)
+                {
+                    result = false;
+                }              
+
+                gv.DataSource = ds;
+                gv.DataBind();
+
+                cmd.Dispose();
+
+                conn.Close();
+
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                // error message
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return false;
             }
         }
 

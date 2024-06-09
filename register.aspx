@@ -14,7 +14,7 @@
     <form id="frmRegister" runat="server" class="login-page">
         <div runat="server" class="login-container">
             <h1>Register</h1>
-            <div class="card login-card">
+            <div class="card">
                 <asp:Label ID="lblRegisterError" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
                 <div class="text-input">
                     <div class="input-validation">

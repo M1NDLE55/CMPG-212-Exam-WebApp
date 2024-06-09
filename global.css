@@ -2,6 +2,8 @@
     --primary: #00A5CF;
     --secondary: #004E64;
     --accent: #7AE582;
+    --red: #E5383B;
+    --darkred: #BA181B;
 }
 
 * {
@@ -26,10 +28,6 @@ body {
     width: 100%;
 }
 
-.login-card {
-    background: white;
-}
-
 .link {
     color: var(--secondary);
     text-align: center;
@@ -44,6 +42,7 @@ body {
     padding: 16px;
     border-radius: 10px;
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    background: white;
 }
 
 .text-input {
@@ -97,7 +96,6 @@ body {
         background-color: #0095ba;
     }
 
-/*#region Dashboard layout*/
 .header {
     display: flex;
     flex-direction: row;
@@ -150,6 +148,40 @@ body {
     overflow-y: auto;
 }
 
+.dashboard-form {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    max-width: 600px;
+    width: 100%;
+    padding: 16px;
+}
+
+    .dashboard-form > div {
+        width: 100%;
+        margin: 0px;
+    }
+
+    .dashboard-form > div > h2 {
+        margin-bottom: 16px;
+    }
+
+.table-button {
+    font-size: 14px;
+    margin: 0px;
+}
+
+.table-container {
+    padding: 0px;
+    overflow: hidden;
+}
+
 .account-link {
     display: flex;
     flex-direction: row;
@@ -166,4 +198,26 @@ body {
     .account-link > img {
         height: 30px;
     }
-/*#endregion */
+
+.button-keep {
+    background-color: white;
+    border-color: var(--primary);
+    color: black;
+}
+
+    .button-keep:hover {
+        background-color: whitesmoke;
+    }
+
+.button-cancel{
+    background-color: var(--red);
+    border-color: darkred;
+}
+
+    .button-cancel:hover {
+        background-color: var(--darkred);
+    }
+
+.text-center {
+    text-align: center;
+}
