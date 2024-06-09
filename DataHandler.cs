@@ -173,6 +173,36 @@ namespace WebApp_44905165
             }
         }
 
+        public bool ExecuteDelete(SqlCommand cmd)
+        {
+            try
+            {
+                // uses sql delete statement to delete record from database
+                conn.Open();
+
+                adapter.DeleteCommand = cmd;
+
+                bool result = false;
+                if (adapter.DeleteCommand.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+
+                cmd.Dispose();
+
+                conn.Close();
+
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                // error message
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+
+                return false;
+            }
+        }
+
         public void FillDropDown(SqlCommand cmd, ref DropDownList ddlRef, string column)
         {
             // creates and assigns a new dataset to a drop down list

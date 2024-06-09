@@ -75,6 +75,11 @@ body {
     font-size: 16px;
 }
 
+.list select {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
 .input-validation {
     display: flex;
     flex-direction: row;
@@ -117,6 +122,13 @@ body {
     .button-outline:hover {
         background-color: whitesmoke;
     }
+
+.horizontal-input {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+}
 
 .header {
     display: flex;
@@ -228,4 +240,14 @@ body {
 
     .button-cancel:hover {
         background-color: var(--darkred);
+    }
+
+.button-cancel-outline {
+    background-color: white;
+    border-color: var(--red);
+    color: var(--red);
+}
+
+    .button-cancel-outline:hover {
+        background-color: whitesmoke;
     }

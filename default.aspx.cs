@@ -19,8 +19,8 @@ namespace WebApp_44905165
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = "piet@tester.com";
-            string password = "frikkels";
+            string email = "piet@testers.com";
+            string password = "okayokay";
             
             //string email = txtEmail.Text;
             //string password = txtPassword.Text;
