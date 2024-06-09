@@ -13,6 +13,8 @@ namespace WebApp_44905165
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            // -- routes --
+
             // login
             RouteTable.Routes.MapPageRoute(
                 "Login",

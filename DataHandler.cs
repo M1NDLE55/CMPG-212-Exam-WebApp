@@ -172,5 +172,35 @@ namespace WebApp_44905165
                 return false;
             }
         }
+
+        public void FillDropDown(SqlCommand cmd, ref DropDownList ddlRef, string column)
+        {
+            // creates and assigns a new dataset to a drop down list
+
+            try
+            {
+                conn.Open();
+
+                DataSet dataSet = new DataSet();
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataSet);
+
+                cmd.Dispose();
+
+                conn.Close();
+
+                // assign desired column to dataset
+                ddlRef.DataValueField = column;
+                ddlRef.DataTextField = column;
+                ddlRef.DataSource = dataSet.Tables[0];
+                ddlRef.DataBind();
+            }
+            catch (Exception ex)
+            {
+                // error message
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
     }
 }
