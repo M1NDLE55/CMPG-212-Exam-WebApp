@@ -26,15 +26,15 @@ namespace WebApp_44905165.dashboard
             // config controls
             if (!IsPostBack)
             {
-                // date range validator - min = today and max = 2 years from now
+                // set date range validator - min = today and max = 2 years from now
                 rangeValidatorDate.MinimumValue = DateTime.Now.ToShortDateString();
                 rangeValidatorDate.MaximumValue = DateTime.Now.AddYears(2).ToShortDateString();
 
-                // procedures
+                // get procedures
                 SqlCommand cmdProcedures = new SqlCommand(@"select name from [procedure] order by name asc", handler.conn);
                 handler.FillDropDown(cmdProcedures, ref ddlProcedure, "name");
 
-                // time slots
+                // set time slots
                 DateTime timeSlots = new DateTime(2000, 1, 1, 8, 0, 0);
                 do
                 {

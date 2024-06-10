@@ -12,6 +12,7 @@
 </head>
 <body>
     <form id="frmDashboard" runat="server">
+        <%-- Header --%>
         <div class="header">
             <asp:Image ID="imgLogo" runat="server" ImageUrl="~/assets/logo.svg" />
             <asp:HyperLink ID="linkAccount" runat="server" NavigateUrl="/account" CssClass="account-link">
@@ -19,11 +20,14 @@
                 <asp:Image ID="imgUser" runat="server" ImageUrl="~/assets/user.svg"/>
             </asp:HyperLink>
         </div>
+        <%-- Container --%>
         <div class="content-container">
+            <%-- Sidenav --%>
             <div class="sidenav">
                 <asp:HyperLink ID="linkAppointments" runat="server" NavigateUrl="/appointments">My Appointments</asp:HyperLink>
                 <asp:HyperLink ID="linkBooking" runat="server" NavigateUrl="/booking">Book Appointment</asp:HyperLink>
             </div>
+            <%-- Page content --%>
             <div class="content">
                 <asp:ContentPlaceHolder ID="masterContent" runat="server"></asp:ContentPlaceHolder>
             </div>

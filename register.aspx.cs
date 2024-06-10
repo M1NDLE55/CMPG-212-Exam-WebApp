@@ -22,10 +22,11 @@ namespace WebApp_44905165
             string email = txtEmail.Text;
             string password = txtPassword.Text;
 
+            // get user id and name by email if password is null
             SqlCommand getIdCmd = new SqlCommand(@"select id, name, case when password is null then 'empty' else 'filled' end as status from patient where email = @email", handler.conn);
             getIdCmd.Parameters.AddWithValue("@email", email);
 
-            string[] patient = handler.GetRowValues(getIdCmd, 2);
+            string[] patient = handler.GetRowValues(getIdCmd, 3);
 
             // check if patient exists
             if (patient == null)
@@ -53,6 +54,7 @@ namespace WebApp_44905165
 
             if (!handler.ExecuteUpdate(updatePasswordCmd))
             {
+                // error message
                 lblRegisterError.Text = "Something unexpected happend*";
                 lblRegisterError.Visible = true;
                 return;

@@ -4,8 +4,10 @@
 </asp:Content>
 <asp:Content ID="contentMain" ContentPlaceHolderID="masterContent" runat="server">
     <div class="dashboard-form">
+        <%-- Main content --%>
         <div id="content" runat="server">
             <h2>Upcoming Appointments</h2>
+            <%-- Appointments grid view --%>
             <div class="card table-container">               
                 <asp:GridView ID="gvAppointments" runat="server" AutoGenerateColumns="false" DataKeyNames="ID,Procedure,DateTime,Fee" Width="100%" CellPadding="8" HeaderStyle-BackColor="#7AE582" BorderWidth="0" GridLines="None" HeaderStyle-HorizontalAlign="Left" AlternatingRowStyle-BackColor="WhiteSmoke" OnRowCommand="gvAppointments_RowCommand" HeaderStyle-Wrap="false" HeaderStyle-Height="40">
                     <Columns>
@@ -17,6 +19,7 @@
                 </asp:GridView>
             </div>
         </div>
+        <%-- Appointment details --%>
         <div id="details" runat="server" visible="false">
             <h2 style="margin-bottom: 16px;">Confirm Cancellation</h2>
             <div class="card">
@@ -25,6 +28,7 @@
                 <asp:Button ID="btnConfirm" runat="server" Text="Cancel Appointment" CssClass="button button-cancel" OnClick="btnConfirm_Click"/>
             </div>
         </div>
+        <%-- Dynamic message --%>
         <div id="message" runat="server" visible="false" style="text-align:center">
             <h2>No Upcomming Appointments</h2>
         </div>

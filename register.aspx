@@ -15,7 +15,9 @@
         <div runat="server" class="login-container">
             <h1>Register</h1>
             <div class="card">
+                <%-- Dynamic error message --%>
                 <asp:Label ID="lblRegisterError" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+                <%-- Email --%>
                 <div class="text-input">
                     <div class="input-validation">
                         <asp:Label ID="lblEmail" runat="server" Text="Email Address"></asp:Label>
@@ -26,6 +28,7 @@
                     </div>
                     <asp:TextBox ID="txtEmail" runat="server" placeholder="Enter your email here"></asp:TextBox>
                 </div>
+                <%-- Password --%>
                 <div class="text-input">
                     <div class="input-validation">
                         <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
@@ -36,6 +39,7 @@
                     </div>
                     <asp:TextBox ID="txtPassword" runat="server" placeholder="Enter your password here" type="password"></asp:TextBox>
                 </div>  
+                <%-- Confirm Password --%>
                 <div class="text-input">
                     <div class="input-validation">
                         <asp:Label ID="lblConfirm" runat="server" Text="Confirm Password"></asp:Label>
@@ -47,6 +51,7 @@
                     <asp:TextBox ID="txtConfirm" runat="server" placeholder="Confirm your password" type="password"></asp:TextBox>
                 </div> 
                 <asp:Button ID="btnRegister" CssClass="button" runat="server" Text="Register" OnClick="btnRegister_Click" />
+                <%-- Redirect to login --%>
                 <a class="link" href="/">Already have an account? Login here</a>
             </div>            
         </div> 

@@ -15,7 +15,7 @@ namespace WebApp_44905165
         {
             // -- routes --
 
-            // login
+            // login - default route
             RouteTable.Routes.MapPageRoute(
                 "Login",
                 "",

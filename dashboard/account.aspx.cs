@@ -37,7 +37,7 @@ namespace WebApp_44905165.dashboard
                 allergiesCmd.Parameters.AddWithValue("@patient_id", patientID);
 
                 // parse allergies to array
-                string[] allergies = handler.GetRowValues(allergiesCmd, 1)[0].Split(',');
+                string[] allergies = handler.GetRowValues(allergiesCmd, 1)?[0].Split(',');             
 
                 // prefill data
                 txtName.Text = personal[0];
@@ -46,10 +46,42 @@ namespace WebApp_44905165.dashboard
                 txtEmail.Text = personal[3];
                 txtEmergency.Text = personal[4];
 
-                foreach (string allergy in allergies)
+                if (allergies != null)
                 {
-                    lstAllergies.Items.Add(allergy);
-                }
+                    foreach (string allergy in allergies)
+                    {
+                        lstAllergies.Items.Add(allergy);
+                    }
+                }                
+            }
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            // get personal info
+            string
+                name = txtName.Text,
+                surname = txtSurname.Text,
+                number = txtNumber.Text,
+                email = txtEmail.Text,
+                emergency = txtEmergency.Text;
+            int patientID = (int)Session["UserID"];
+
+            // update personal info
+            string sql = @"update patient set name = @name, surname = @surname, number = @number, email = @email, emergency_contact = @emergency where id = @id";
+            SqlCommand cmd = new SqlCommand(sql, handler.conn);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@surname", surname);
+            cmd.Parameters.AddWithValue("@number", number);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@emergency", emergency);
+            cmd.Parameters.AddWithValue("@id", patientID);
+
+            if (handler.ExecuteUpdate(cmd))
+            {
+                // set username and refresh page
+                Session["UserName"] = name;
+                Response.Redirect("/account");               
             }
         }
 
@@ -121,36 +153,6 @@ namespace WebApp_44905165.dashboard
                 lblListError.Visible = true;
             }
 
-        }
-
-        protected void btnUpdate_Click(object sender, EventArgs e)
-        {
-            // get personal info
-            string
-                name = txtName.Text,
-                surname = txtSurname.Text,
-                number = txtNumber.Text,
-                email = txtEmail.Text,
-                emergency = txtEmergency.Text;
-            int patientID = (int)Session["UserID"];
-
-            // update personal info
-            string sql = @"update patient set name = @name, surname = @surname, number = @number, email = @email, emergency_contact = @emergency where id = @id";
-            SqlCommand cmd = new SqlCommand(sql, handler.conn);
-            cmd.Parameters.AddWithValue("@name", name);
-            cmd.Parameters.AddWithValue("@surname", surname);
-            cmd.Parameters.AddWithValue("@number", number);
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@emergency", emergency);
-            cmd.Parameters.AddWithValue("@id", patientID);
-
-            if (handler.ExecuteUpdate(cmd))
-            {
-                // set username and refresh page
-                Session["UserName"] = name;
-                Response.Redirect("/account");
-            }
-            
         }
 
         protected void btnChangePassword_Click(object sender, EventArgs e)

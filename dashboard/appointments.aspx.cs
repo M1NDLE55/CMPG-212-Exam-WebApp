@@ -80,7 +80,7 @@ namespace WebApp_44905165.dashboard
             // reset details
             litDetails.Text = "";
 
-            // remove cookie
+            // remove cookie with appointment id
             HttpCookie _cookie = Request.Cookies["CancelForm"];
             if (_cookie != null )
             {

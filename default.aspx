@@ -15,7 +15,9 @@
         <div runat="server" class="login-container">
             <h1>Login</h1>
             <div class="card">
+                <%-- Dynamic login error --%>
                 <asp:Label ID="lblLoginError" runat="server" Text="Incorrect email or password*" ForeColor="Red" Visible="false"></asp:Label>
+                <%-- Email --%>
                 <div class="text-input">
                     <div class="input-validation">
                         <asp:Label ID="lblEmail" runat="server" Text="Email Address"></asp:Label>
@@ -26,6 +28,7 @@
                     </div>
                     <asp:TextBox ID="txtEmail" runat="server" placeholder="Enter your email here"></asp:TextBox>
                 </div>
+                <%-- Password --%>
                 <div class="text-input">
                     <div class="input-validation">
                         <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
@@ -34,6 +37,7 @@
                     <asp:TextBox ID="txtPassword" runat="server" placeholder="Enter your password here" type="password"></asp:TextBox>
                 </div>  
                 <asp:Button ID="btnLogin" CssClass="button" runat="server" Text="Login" OnClick="btnLogin_Click" />
+                <%-- Redirect to register --%>
                 <a class="link" href="/register">New Patient? Finish your account setup here</a>            
             </div>            
         </div>      

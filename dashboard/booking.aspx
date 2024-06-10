@@ -4,10 +4,13 @@
 </asp:Content>
 <asp:Content ID="contentMain" ContentPlaceHolderID="masterContent" runat="server">
     <div class="dashboard-form">
+        <%-- Main content --%>
         <div id="content" runat="server">
             <h2>Book an Appointment</h2>
             <div class="card">
+                <%-- Dynamic error message --%>
                 <asp:Label ID="lblError" runat="server" ForeColor="Red" Visible="false"></asp:Label>
+                <%-- Procedure --%>
                 <div class="text-input dropdown">
                     <div class="input-validation">
                         <asp:Label ID="lblProcedure" runat="server" Text="Procedure"></asp:Label>
@@ -15,6 +18,7 @@
                     </div>
                     <asp:DropDownList ID="ddlProcedure" runat="server"></asp:DropDownList>
                 </div>
+                <%-- Date --%>
                 <div class="text-input">
                     <div class="input-validation">
                         <asp:Label ID="lblDate" runat="server" Text="Date"></asp:Label>
@@ -25,6 +29,7 @@
                     </div>
                     <asp:TextBox ID="txtDate" runat="server" type="date"></asp:TextBox>
                 </div>
+                <%-- Time --%>
                 <div class="text-input dropdown">
                     <div class="input-validation">
                         <asp:Label ID="lblTime" runat="server" Text="Time"></asp:Label>
@@ -35,6 +40,7 @@
                 <asp:Button ID="btnBook" runat="server" Text="Book Appointment" CssClass="button" OnClick="btnBook_Click" />
             </div>
         </div>
+        <%-- Confirmation popup --%>
         <div id="confirmation" runat="server" visible="false">
             <h2>Appointment Booked</h2>
             <div class="card">

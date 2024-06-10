@@ -18,12 +18,9 @@ namespace WebApp_44905165
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
-        {
-            string email = "piet@testers.com";
-            string password = "okayokay";
-            
-            //string email = txtEmail.Text;
-            //string password = txtPassword.Text;
+        {          
+            string email = txtEmail.Text;
+            string password = txtPassword.Text;
 
             // get id if user info correct
             SqlCommand cmd = new SqlCommand(@"select id, name from patient where email = @email and password = @password", handler.conn);
